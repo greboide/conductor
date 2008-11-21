@@ -2,7 +2,7 @@
 
 This is a base rails application with the following features:
 
-  - [Authlogic](http://github.com/binarylogic/authlogic) based authentication, including password reset
+  - [Authlogic](http://github.com/binarylogic/authlogic) based authentication, including password reset and openid support
 
 ## Install
 
