@@ -10,7 +10,6 @@ This is a base rails application skeleton. I like bort, but wanted to use authlo
   - support for user roles (via `require_role` in your controller classes)
   - configures will_paginate gem in environment.rb
   - sessions use ActiveRecord session store
-  
 
 ## TODO
 
