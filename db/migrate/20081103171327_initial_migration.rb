@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration
+class InitialMigration < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
       t.string :first_name, :default => "", :null => false
@@ -20,9 +20,20 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, :login
     add_index :users, :remember_token
     add_index :users, :last_request_at
+
+    create_table :sessions do |t|
+      t.string :session_id, :null => false
+      t.text :data
+      t.timestamps
+    end
+
+    add_index :sessions, :session_id
+    add_index :sessions, :updated_at
   end
 
   def self.down
+    drop_table :sessions
+
     drop_table :users
   end
 end
