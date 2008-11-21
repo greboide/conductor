@@ -9,8 +9,6 @@ one:
   last_request_at: 2008-11-03 12:13:27
   last_login_at: 2008-11-03 12:13:27
   current_login_at: 2008-11-03 12:13:27
-  last_login_ip: MyString
-  current_login_ip: MyString
 
 two:
   login: MyString
@@ -21,5 +19,3 @@ two:
   last_request_at: 2008-11-03 12:13:27
   last_login_at: 2008-11-03 12:13:27
   current_login_at: 2008-11-03 12:13:27
-  last_login_ip: MyString
-  current_login_ip: MyString
