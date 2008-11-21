@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   acts_as_authentic :allow_blank_login_and_password_fields => true
 
   validates_presence_of :login, :if => Proc.new { |user| user.openid_identifier.blank? }
-  validates_presence_of :password, :if => Proc.new { |user| user.openid_identifier.blank? }
+  validate :presence_of_password
   validate :normalize_openid_identifier
   validates_uniqueness_of :openid_identifier, :allow_blank => true
 
@@ -12,6 +12,12 @@ class User < ActiveRecord::Base
   end
 
 private
+  def presence_of_password
+    if openid_identifier.blank?
+      errors.add(:password, 'cannot be blank') if @password.blank?
+    end
+  end
+
   def normalize_openid_identifier
     begin
       self.openid_identifier = OpenIdAuthentication.normalize_url(openid_identifier) if !openid_identifier.blank?

@@ -12,6 +12,11 @@ class InitialMigration < ActiveRecord::Migration
       t.string :salt, :null => false
     end
 
+    create_table :roles do |t|
+      t.string :name, :default => "", :null => false
+      t.timestamps
+    end
+
     create_table :sessions do |t|
       t.string :session_id, :null => false
       t.text :data
@@ -20,6 +25,15 @@ class InitialMigration < ActiveRecord::Migration
 
     add_index :sessions, :session_id
     add_index :sessions, :updated_at
+
+    create_table :user_roles do |t|
+      t.integer :user_id
+      t.integer :role_id
+      t.timestamps
+    end
+
+    add_index :user_roles, :user_id
+    add_index :user_roles, :role_id
 
     create_table :users do |t|
       t.string :first_name, :default => "", :null => false
@@ -51,7 +65,11 @@ class InitialMigration < ActiveRecord::Migration
   def self.down
     drop_table :users
 
+    drop_table :user_roles
+
     drop_table :sessions
+
+    drop_table :roles
 
     drop_table :open_id_authentication_nonces
 
