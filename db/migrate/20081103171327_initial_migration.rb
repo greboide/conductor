@@ -38,8 +38,7 @@ class InitialMigration < ActiveRecord::Migration
     add_index :user_roles, :role_id
 
     create_table :users do |t|
-      t.string :first_name, :default => "", :null => false
-      t.string :last_name, :default => "", :null => false
+      t.string :display_name, :default => "", :null => false
       t.string :email, :default => "", :null => false
 
       t.string :login, :default => nil, :null => true
@@ -58,7 +57,7 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps
     end
 
-    admin_user = User.create :email => 'admin@conductor.local', :login => 'admin', :password => 'c0nduct0r', :confirm_password => 'c0nduct0r'
+    admin_user = User.create :email => 'admin@conductor.local', :login => 'admin', :password => 'c0nduct0r', :password_confirmation => 'c0nduct0r'
     admin_user.roles << admin_role
 
     add_index :users, :login

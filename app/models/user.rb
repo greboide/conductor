@@ -1,26 +1,26 @@
 class User < ActiveRecord::Base
-  acts_as_authentic :allow_blank_login_and_password_fields => true
+  has_many :user_roles
+  has_many :roles, :through => :user_roles
 
-  validates_presence_of :login, :if => Proc.new { |user| user.openid_identifier.blank? }
-  validate :presence_of_password
+  acts_as_authentic :login_field_validation_options => {:unless => :using_openid?}, :password_field_validation_options => {:unless => :using_openid?}
+
   validate :normalize_openid_identifier
   validates_uniqueness_of :openid_identifier, :allow_blank => true
 
   def deliver_password_reset_instructions!
     reset_perishable_token!
-    Notifier.deliver_password_reset_instructions(self)
+    PasswordMailer.deliver_password_reset_instructions(self)
   end
 
 private
-  def presence_of_password
-    if openid_identifier.blank?
-      errors.add(:password, 'cannot be blank') if @password.blank?
-    end
+  # For acts_as_authentic configuration
+  def using_openid?
+    !openid_identifier.blank?
   end
 
   def normalize_openid_identifier
     begin
-      self.openid_identifier = OpenIdAuthentication.normalize_url(openid_identifier) if !openid_identifier.blank?
+      self.openid_identifier = OpenIdAuthentication.normalize_url(openid_identifier) if using_openid?
     rescue OpenIdAuthentication::InvalidOpenId => e
       errors.add(:openid_identifier, e.message)
     end

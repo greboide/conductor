@@ -1,0 +1,23 @@
+development:
+  hostname: conductor.local
+  site_name: Conductor
+  admin_email: admin@conductor.local
+  noreply_email: noreply@conductor.local
+
+test:
+  hostname: conductor.local
+  site_name: Conductor
+  admin_email: admin@conductor.local
+  noreply_email: noreply@conductor.local
+
+staging:
+  hostname: conductor.local
+  site_name: Conductor
+  admin_email: admin@conductor.local
+  noreply_email: noreply@conductor.local
+
+production:
+  hostname: conductor.local
+  site_name: Conductor
+  admin_email: admin@conductor.local
+  noreply_email: noreply@conductor.local

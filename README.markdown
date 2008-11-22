@@ -1,6 +1,6 @@
 # Conductor Application
 
-This is a base rails application skeleton. I like bort, but wanted to use authlogic instead of restful authentication.
+This is a base rails application skeleton. I like [bort](http://github.com/fudgestudios/bort), but wanted to use authlogic instead of restful authentication.
 
 ## Features
 
@@ -10,11 +10,11 @@ This is a base rails application skeleton. I like bort, but wanted to use authlo
   - support for user roles (via `require_role` in your controller classes)
   - configures will_paginate gem in environment.rb
   - sessions use ActiveRecord session store
+  - application settings for things like sitename, url and email addresses
 
 ## TODO
 
   - Exception Notifier, or hoptoad, or...
-  - settings.yml for application settings like sitename, url, email, etc. (primarily for use in notifications)
   - capistrano
   - jquery
   - jrails
@@ -25,5 +25,11 @@ This is a base rails application skeleton. I like bort, but wanted to use authlo
   - edit database.yml
   - edit email and password for admin user in initial migration
   - rake db:migrate
+
+## Acknowledgement
+
+  - portions of this were inspired by (or copied outright from) [bort](http://github.com/fudgestudios/bort)
+
+## Legal
 
 Copyright (c) 2008 [unwwwired.net](http://unwwwired.net), released under the MIT license

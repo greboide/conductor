@@ -4,17 +4,14 @@
 <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
 <%= form.password_field :password %><br />
 <br />
-<%= form.label :confirm_password %><br />
-<%= form.password_field :confirm_password %><br />
+<%= form.label :password_confirmation %><br />
+<%= form.password_field :password_confirmation %><br />
 <br />
 <%= form.label :openid_identifier, "Or use OpenID instead of a standard login / password" %><br />
 <%= form.text_field :openid_identifier %><br />
 <br />
-<%= form.label :first_name %><br />
-<%= form.text_field :first_name %><br />
-<br />
-<%= form.label :last_name %><br />
-<%= form.text_field :last_name %><br />
+<%= form.label :display_name %><br />
+<%= form.text_field :display_name %><br />
 <br />
 <%= form.label :email %><br />
 <%= form.text_field :email %><br />
