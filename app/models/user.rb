@@ -12,12 +12,11 @@ class User < ActiveRecord::Base
     PasswordMailer.deliver_password_reset_instructions(self)
   end
 
-private
-  # For acts_as_authentic configuration
   def using_openid?
     !openid_identifier.blank?
   end
 
+private
   def normalize_openid_identifier
     begin
       self.openid_identifier = OpenIdAuthentication.normalize_url(openid_identifier) if using_openid?

@@ -17,7 +17,7 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps
     end
 
-    admin_role = Role.create :name => 'Administrator'
+    admin_role = Role.create! :name => 'Administrator'
 
     create_table :sessions do |t|
       t.string :session_id, :null => false
@@ -57,7 +57,7 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps
     end
 
-    admin_user = User.create :email => 'admin@conductor.local', :login => 'admin', :password => 'c0nduct0r', :password_confirmation => 'c0nduct0r'
+    admin_user = User.create! :email => APP_CONFIG[:admin_email], :login => 'admin', :password => APP_CONFIG[:admin_password], :password_confirmation => APP_CONFIG[:admin_password]
     admin_user.roles << admin_role
 
     add_index :users, :login

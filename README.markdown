@@ -8,16 +8,16 @@ This is a base rails application skeleton. I like [bort](http://github.com/fudge
   - password reset support
   - openid support
   - support for user roles (via `require_role` in your controller classes)
-  - configures will_paginate gem in environment.rb
+  - authlogic, ruby-openid, will_paginate and haml gems configured in environment.rb
   - sessions use ActiveRecord session store
   - application settings for things like sitename, url and email addresses
+  - jrails and jquery preinstalled (instead of prototype) 
+  - paperclip preinstalled
 
 ## TODO
 
   - Exception Notifier, or hoptoad, or...
   - capistrano
-  - jquery
-  - jrails
 
 ## Installation
 
