@@ -22,8 +22,7 @@ This is a base rails application skeleton. I like [bort](http://github.com/fudge
 ## Installation
 
   - download and unzip [conductor](http://github.com/sbfaulkner/conductor)
-  - edit database.yml
-  - edit email and password for admin user in initial migration
+  - edit database.yml and settings.yml
   - rake db:migrate
 
 ## Acknowledgement
