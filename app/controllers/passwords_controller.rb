@@ -3,11 +3,12 @@ class PasswordsController < ApplicationController
   before_filter :require_no_user
   
   def new
+    @user = User.new
     render
   end
   
   def create
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_email(params[:user][:email])
     if @user
       @user.deliver_password_reset_instructions!
       flash[:notice] = "Instructions to reset your password have been emailed to you. " +
@@ -15,6 +16,7 @@ class PasswordsController < ApplicationController
       redirect_to root_url
     else
       flash[:notice] = "No user was found with that email address"
+      @user = User.new(params[:user])
       render :action => :new
     end
   end
